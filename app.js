@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-
+const url = require(__dirname+"/db.js");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -18,7 +18,7 @@ const contactContent =
   "Please contact me on rakshitvipinjain21@gmail.com.";
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/blogDB", {
+mongoose.connect(url.getUrl+"/blogDB", {
   useNewUrlParser: true,
 });
 const postSchema = mongoose.Schema({
